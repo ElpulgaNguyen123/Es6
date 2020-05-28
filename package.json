@@ -8,7 +8,10 @@
     "gulp": "^4.0.2",
     "gulp-sass": "^4.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.10.1",
+    "gulp-babel": "^8.0.0-beta.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

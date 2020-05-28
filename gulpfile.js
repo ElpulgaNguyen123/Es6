@@ -3,6 +3,7 @@ const { series, task } = require('gulp');
 var sass = require('gulp-sass');
 var { watch } = require('gulp');
 var browserSync = require('browser-sync').create();
+var babel = require('gulp-babel')
 
 function style() {
     return gulp.src(['./src/css/*.scss',])
@@ -22,6 +23,11 @@ function js() {
         .pipe(browserSync.stream()) // tự động refresh lại trang
 }
 
+function complierEs6() { 
+    return gulp.src(['./src/js/es6/*.js']).pipe(babel())
+    .pipe(gulp.dest('./build/js/dest'));
+ }
+
 task('build', function (cb) {
     console.log('Loha')
 });
@@ -38,4 +44,4 @@ function watchSystem() {
     watch('./src/js/**/*.js').on('change', browserSync.reload)
 }
 //exports.build = series('build');
-exports.build = series(style, js, watchSystem);
+exports.build = series(style, js, complierEs6, watchSystem);
